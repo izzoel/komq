@@ -1,4 +1,4 @@
-# KOMQ --- Aplikasi Quiz Diskominfo Tapin
+# KOMQ -- Aplikasi Quiz Diskominfo Tapin
 
 **Tapin Expo 2025**
 
@@ -54,7 +54,7 @@ SweetAlert2 - Eloquent ORM - AJAX / Fetch API - Laravel Filesystem
 ## 👥 Kontributor
 
 Tim **Dinas Komunikasi dan Informatika Kabupaten Tapin**\
-Bidang Aplikasi Informatika
+Bidang Penyelengaraan E-Government
 
 ## 📄 Lisensi
 
