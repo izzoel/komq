@@ -5,21 +5,18 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RewardController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
 Route::get('/', [QuizController::class, 'index']);
 
 
 // Route::get('/login', [AdminController::class, 'login'])->name('login');
 // Route::post('/login', [AdminController::class, 'proses'])->name('proses');
+Route::get('/login', [AdminController::class, 'login'])->name('login');
+Route::post('/login', [AdminController::class, 'proses'])->name('proses');
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 // Route::get('/admin', [AdminController::class, 'index'])->middleware('autentifikasi');
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('autentifikasi');
-
+Route::get('/admin', [AdminController::class, 'index']);
 
 // Tampilkan soal
 Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.take');

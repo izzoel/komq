@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>KOMQ Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
     <style>
         :root {
             --size: 520px;
@@ -13,78 +16,18 @@
 
         body {
             background: #111;
-            color: #fff;
+            /* color: #fff; */
             font-family: Arial;
             overflow: hidden;
         }
 
-        .stage {
-            width: var(--size);
-            height: var(--size);
-            position: relative;
-        }
-
-        .sphere {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .tag {
-            --x: 0px;
-            --y: 0px;
-            --z: 0px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform-style: preserve-3d;
-            transform: translate3d(var(--x), var(--y), var(--z)) translate(-50%, -50%);
-            padding: 8px 14px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.907);
-            backdrop-filter: blur(4px);
-            color: #2d2d2d;
-            font-weight: 600;
-            white-space: nowrap;
-            cursor: pointer;
-            user-select: none;
-            transition: transform 250ms cubic-bezier(.2, .9, .2, 1), background 250ms, box-shadow 250ms;
-            font-size: 18px;
-            min-width: var(--tag-size);
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-        }
-
-        .tag.selected {
-            font-size: 1.6rem !important;
-            font-weight: 700;
-            color: #e6e3e3 !important;
-            opacity: 1 !important;
-            padding: 8px 14px;
-            border-radius: 10px;
-            background: rgb(218, 131, 0);
-        }
-
-        .tag.dim {
-            opacity: 0.25 !important;
-            transform: scale(.55) !important;
-        }
-
-        .result-badge {
-            margin-top: 20px;
-            font-size: 1.4rem;
-        }
-
-        .controls {
-            margin-top: 20px;
-        }
-
         .btn-3d {
+
             background: linear-gradient(to bottom, #ffd131 0%, #e3a600 70%);
             border: none;
-            border-radius: 40px;
-            padding: 18px 60px;
-            font-size: 22px;
+            border-radius: 24px;
+            padding: 8px 22px;
+            font-size: 16px;
             font-weight: bold;
             color: #5a3e00;
             cursor: pointer;
@@ -124,98 +67,34 @@
             }
         }
 
-        @keyframes rotateCircle {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        @keyframes rotateCircleCC {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-
-            to {
-                transform: translate(-50%, -50%) rotate(-360deg);
-            }
-        }
-
-        #spinBtn {
-            /* animation: floatY 1.2s ease-in-out infinite; */
+        #logoutBtn {
             will-change: transform;
             transition: box-shadow .1s, transform .1s;
         }
 
-        #spinBtn:hover {
+        #logoutBtn:hover {
             animation-play-state: paused;
             transform: translateY(-1px);
             filter: brightness(0.9);
             transition: box-shadow .1s, transform .1s, filter .12s;
         }
-
-        .running-bg {
-            position: absolute;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            pointer-events: none;
-            white-space: nowrap;
-            opacity: 0.08;
-            font-weight: 700;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-        }
-
-        .running-bg.row1 {
-            top: 28%;
-            font-size: 40px;
-            animation: runNames1 32s linear infinite;
-        }
-
-        .running-bg.row2 {
-            top: 33%;
-            font-size: 40px;
-            animation: runNames2 36s linear infinite;
-        }
-
-        @keyframes runNames1 {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes runNames2 {
-            from {
-                transform: translateX(-50%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
     </style>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 </head>
 
 <body
     style="background-image: url('{{ asset('images/quiz-bg.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; position: relative;">
 
+    <div class="m-4 mb-0">
+        <a href="/logout">
+            <button id="logoutBtn" class="btn-3d m-3">Logout</button>
+        </a>
+    </div>
+
     <div class="d-flex justify-content-center align-items-center flex-column mt-5">
         <div class="card" style="width: 80%">
             <div class="card-header">
-                Admin Panel | {{ now()->translatedFormat('d F Y H:i') }} |
+                <span class="badge bg-secondary">Admin Panel</span> | {{ now()->translatedFormat('d F Y H:i') }} |
             </div>
             <div class="card-body">
                 <h5 class="card-title">Reward List
