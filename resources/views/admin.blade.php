@@ -110,49 +110,53 @@
                         </a>
                     </span>
                 </h5>
-                <table class="table table-hover m-3">
+                <table class="table table-hover">
                     <thead class="text-center">
                         <th>#</th>
                         <th class="text-start">Nama</th>
                         <th>Stok</th>
                         <th>Aksi</th>
                     </thead>
-                    @foreach ($rewards as $reward)
-                        <tr class="text-center">
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input toggle-switch" type="checkbox" {{ $reward->stock > 0 ? 'checked' : '' }} data-id="{{ $reward->id }}">
-                                </div>
-                            </td>
+                    <tbody>
+                        @foreach ($rewards as $reward)
+                            <tr class="text-center">
+                                <td>
+                                    <div class="form-check form-switch d-flex justify-content-center">
+                                        <input class="form-check-input toggle-switch" type="checkbox" {{ $reward->stock > 0 ? 'checked' : '' }} data-id="{{ $reward->id }}">
+                                    </div>
+                                </td>
 
-                            <td class="text-start">
-                                <button type="button" class="btn btn-link editRewardBtn" data-id="{{ $reward->id }}" data-bs-toggle="modal" data-bs-target="#editRewardModal"
-                                    {{ $reward->is_aktive > 0 ? '' : 'disabled' }}>
-                                    {{ $reward->name }}
-                                </button>
-                            </td>
+                                <td class="text-start">
+                                    <button type="button" class="btn btn-link p-0 editRewardBtn" data-id="{{ $reward->id }}" data-bs-toggle="modal"
+                                        data-bs-target="#editRewardModal" {{ $reward->is_aktive ? '' : 'disabled' }}>
+                                        <strong>{{ $reward->name }}</strong>
+                                    </button>
+                                </td>
 
-                            <td>
-                                @if ($reward->stock_temp > 0)
-                                    <span class="badge bg-secondary">off</span>
-                                @elseif ($reward->stock == 0)
-                                    <span class="badge bg-danger">habis</span>
-                                @else
-                                    <span class="badge bg-success">{{ $reward->stock }}</span>
-                                @endif
-                            </td>
+                                <td>
+                                    @if ($reward->stock_temp > 0)
+                                        <span class="badge bg-secondary">off</span>
+                                    @elseif ($reward->stock == 0)
+                                        <span class="badge bg-danger">habis</span>
+                                    @else
+                                        <span class="badge bg-success">{{ $reward->stock }}</span>
+                                    @endif
+                                </td>
 
-                            <td>
-                                <button class="btn btn-primary btn-sm btn-plus" data-id="{{ $reward->id }}" {{ $reward->is_aktive ? '' : 'disabled' }}>
-                                    +
-                                </button>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button class="btn btn-primary btn-sm btn-plus px-3" data-id="{{ $reward->id }}" {{ $reward->is_aktive ? '' : 'disabled' }}>
+                                            +
+                                        </button>
 
-                                <button class="btn btn-danger btn-sm btn-minus" data-id="{{ $reward->id }}" {{ $reward->is_aktive ? '' : 'disabled' }}>
-                                    −
-                                </button>
-                            </td>
-                        </tr>
-                    @endforeach
+                                        <button class="btn btn-danger btn-sm btn-minus px-3" data-id="{{ $reward->id }}" {{ $reward->is_aktive ? '' : 'disabled' }}>
+                                            −
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
