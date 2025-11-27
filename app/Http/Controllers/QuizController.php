@@ -48,23 +48,7 @@ class QuizController extends Controller
         return view('quiz', compact('quiz', 'pilihan', 'kategori'));
     }
 
-    // public function show(Quiz $quiz, $kategori)
-    // {
-    //     $labels = ['A', 'B', 'C', 'D'];
-    //     $pilihan = [];
 
-    //     foreach ($labels as $label) {
-    //         $kolom = "pilihan" . $label;
-    //         $pilihan[$label] = $quiz->$kolom;
-    //     }
-
-    //     return view('quiz', compact('quiz', 'pilihan'));
-    // }
-
-
-    /**
-    * Show the form for editing the specified resource.
-    */
     public function reward(Quiz $quiz)
     {
        return view('reward');
@@ -84,10 +68,7 @@ class QuizController extends Controller
             'kunci' => strtolower($benar)
         ]);
 
-        //         return response()->json([
-        //     'status' => $isCorrect ? 'benar' : 'salah',
-        //     'kunci'  => strtolower($quiz->kunci) // misal 'c'
-        // ]);
+
 
     }
 
