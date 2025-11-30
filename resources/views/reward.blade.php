@@ -273,6 +273,7 @@
         {{-- <img src="{{ asset('images/diskominfo.png') }}" class="card-img-top" alt="..."> --}}
         {{-- </a> --}}
         {{-- </div> --}}
+        <br>
         <div class="stage">
             <div id="sphere" class="sphere mt-5"></div>
         </div>

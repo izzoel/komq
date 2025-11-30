@@ -224,10 +224,11 @@
         <div class="" style="width:18rem;">
             <img src="{{ asset('images/diskominfo.png') }}" class="card-img-top" alt="...">
         </div>
+        <br>
         <div class="stage">
             <div id="sphere" class="sphere mt-5"></div>
         </div>
-
+        <br>
         <div class="controls">
             <button id="spinBtn" class="btn-3d mt-5">Acak</button>
         </div>
@@ -237,7 +238,7 @@
 
 
     <script>
-        const categories = ['Pemrograman', 'Artificial Intelligence', 'SuperApps', 'Internet Sehat', 'Internet Aman', 'GOVEM', 'LAPOR!'];
+        const categories = ['Pemrograman', 'Artificial Intelligence', 'Internet Sehat', 'GOVEM', 'LAPOR!'];
         const sphere = document.getElementById('sphere');
         const spinBtn = document.getElementById('spinBtn');
         const tags = [];
