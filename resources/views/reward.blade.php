@@ -297,7 +297,6 @@
             dataType: 'json',
             success: function(res) {
                 categories = res;
-                console.log("Reward loaded:", categories);
 
                 createTags(); // ← bikin tag setelah data masuk
                 requestAnimationFrame(raf); // ← jalankan animasi sphere

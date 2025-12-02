@@ -507,7 +507,10 @@
                             timer: 5000,
                             timerProgressBar: true,
                             showConfirmButton: false,
-                            allowOutsideClick: false
+                            allowOutsideClick: false,
+                            didClose: () => {
+                                window.location.href = "/";
+                            }
                         });
                     }
 
