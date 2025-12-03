@@ -27,7 +27,8 @@ Stok reward dikelola secara real-time melalui panel admin.
 
 ### 🔐 4. Panel Admin KOMQ
 
-Admin dapat: - Mengatur pertanyaan & kategori\
+Admin dapat: 
+- Mengatur pertanyaan & kategori\
 - Mengelola reward (tambah, kurangi, toggle aktif/nonaktif)\
 - Melihat riwayat reset reward\
 - Mengatur akses menggunakan password\
